@@ -63,47 +63,42 @@ The analysis, modeling, manipulation, computation, visualization, and plotting o
 
 ## Cleaning the Data
 
-Two datasets were merged based on ID. Due to slight differences between the datasets, duplicate columns such as ‘quantity’ and ‘quantity_group’ were identified and removed. Following the removal of duplicate columns, further exploration of the data was conducted.
+Two datasets were merged based on ID. The two datasets had similar or duplicate columns such as ‘quantity’ and ‘quantity_group’ were identified and removed. Following the removal of duplicate columns, further exploration of the data was conducted.
 
 ## Modification of the Target Variable
 
-In the original dataset, 'status_group' was a trinary classification with values of ‘functional’, ‘non-functional’, and ‘functional needs repair’. To simplify the analysis and enable the use of evaluation metrics such as ROC curves and F1 scores, 'status_group' was modified to a binary classification with values of ‘functional’ and ‘non-functional’. This modification involved merging the 'Functional' and 'Functional Needs Repair' categories, as they were considered similar in terms of functionality. This decision aimed to streamline the dataset and facilitate clearer analysis of water well functionality.
+In order to simplify the analysis of the dependent variable 'status_group', I adjusted the Trinary classification into a Binary classification. 'Functional' and 'functional needs' repair', were merged into a single value, and 'non-functional' was left alone. 
+
 # Removal of Non-Duplicate Columns
 
-Before our modeling could begin, several columns were either modified or removed from the dataset for various reasons:
 
+Before our modeling could begin, several columns were removed or changed to expedite that analysis :
 - **Funder:** This column contained a large number of unique values (1897), making it impractical to analyze each individual funder. Removing this variable streamlines our analysis and allows us to focus on other potentially more impactful features.
-  
-- **Subvillage:** While the subvillage feature provides detailed geographic information, it also contains an excessive number of unique values (19,287). Given its granularity, including this feature in our predictive modeling may introduce unnecessary complexity without yielding significant insights.
-
-- **Scheme Name:** Although both 'scheme_management' and 'scheme_name' represent the entity responsible for operating the water-point, the latter contains a vast number of unique values (2696). We opted to retain the more concise 'scheme_management' variable for simplicity and ease of analysis.
-
-- **Installer:** With 2146 unique values, the installer column indicates a wide variety of organizations or individuals responsible for installing water-points. Since analyzing each unique installer would be cumbersome and may not significantly contribute to our modeling efforts, we removed this variable to streamline the dataset.
-
+- **Subvillage:** While the subvillage feature provides detailed geographic information, it also contains an excessive number of unique values (19,287). Given the large number of possible subvillages, this column was removed, to streamline the models.
+- **Scheme Name:** Although both 'scheme_management' and 'scheme_name' represent the group responsible for operating the water-point, the latter contains a vast number of unique values (2696). We opted to retain the column 'scheme_management' variable for simplicity and ease of analysis.
+- **Installer:** With 2146 unique values, the installer column indicates a wide variety of organizations or individuals responsible for installing water-points. Since analyzing each unique installer would be cumbersome we removed this variable to streamline the dataset.
 - **Recorded By:** This column contains only one unique value, indicating that all records were recorded by the same entity. Since it does not offer any variability or meaningful information for analysis, removing it simplifies the dataset without sacrificing relevant information.
-
 - **Ward and LGA:** These columns contained numerous individual values, while the district code provided sufficient geographical information. Therefore, we opted to retain the district code for geographic reference instead.
 #### Handling Missing Data
 
 ### `construction_year`
 
-The `construction_year` column contained 20,709 missing values, potentially valuable for understanding water-well characteristics. To address this issue, KNN (K-Nearest Neighbors) imputation was employed. This technique estimates missing values by considering the values of nearby data points, leveraging the similarity of neighboring observations. Here, `neighbors=5` was chosen to balance accuracy and computational efficiency.
+### `construction_year
+The 'constuction_year' column seemed logically important. As many buildings, or projects created many decades ago, often need repair. However, the data have
+20,709 missing values. To address this issue, KNN (K-Nearest Neighbors) imputation was employed. This is a technique used in Data Science to address missing values by considering the values of similar neighbor data points rows. Then using the value in this case 'neighbors=5', the method analysis the similarities of columns, and replaces the unknown 'construction', with a best estimated value.  
 
-Utilizing KNN imputation enabled the retention of more data and preserved dataset integrity. However, it's essential to note that imputed values should be interpreted cautiously, as KNN imputation assumes similar observations have similar missing variable values.
 
 
 ### `Population`
 
 
-To address missing values in the `population` column, KNN (K-Nearest Neighbors) imputation was employed. This technique estimates missing values by considering the values of nearby data points. Here, KNN imputation will estimate the missing population based on the population of neighboring data points, leveraging the similarity of neighboring observations to provide a reasonable approximation of the missing values.
-
-Retaining the `population` column is crucial as it can provide valuable insights into the water-well's usage and needs. Population density around a water-well site may indicate the demand for water, infrastructure requirements, or potential stresses on the water source. Therefore, imputing missing values in this column ensures that we can leverage this important feature in our analysis and modeling.
+The KNN imputation was also used for population. Keeping the `population` column is essential because its important to know how population effects the water-wells. Its also important to predict when an area with a high population will run out of water.
 
 #### Addressing Categorical data
 
-### Ordinal Encoding of Decade of Construction
+### Ordinal Encoding of Decade of Construction 
 
-**Ordinal Encoding:** The textual decade categories were converted into ordered numerical values using `OrdinalEncoder` from `sklearn.preprocessing`. This transformation preserves the temporal order of construction decades, facilitating numerical algorithm processing.
+ **Ordinal Encoding:** The decade categories were converted into ordered numerical values using `OrdinalEncoder`. This transformation kept the  construction decades in time sequential order,  and allowed for numerical algorithm processing.
 
 **Rationale:** Ordinal encoding was chosen due to the inherent temporal ordering of construction decades. Representing decades as ordered numbers allows algorithms to understand and leverage this order, potentially enhancing predictive performance.
 
