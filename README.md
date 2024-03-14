@@ -1,12 +1,8 @@
 # Predicting Water-well Functionality based on Analysis from Model 4: Gradient Boosting Classifier
-Water scarcity poses a significant challenge in Tanzania, impacting various aspects of life. This project endeavors to predict non-functioning water wells to aid in addressing this critical issue.
+Water scarcity is a significant threat to human life in Tanzania. This project aims is to predict non-functional water-wells so the Tanazanian government can quickly provide fixes to the waterwells, to ensure the population has drinking water.
 ## Goal
-The primary goal of this project is to identify factors contributing to the functionality status of water wells across Tanzania, distinguishing between functional and non-functional wells. Utilizing the 'status_group' variable as an indicator of functionality, our analysis indicates that three key categories significantly influence the likelihood of non functionality:
-	Quantity of Water - Dry: Water wells with dry water sources exhibit a higher probability of being non-functional.
-	Water Point Type - Other: Water wells categorized as 'other' water point types are more prone to being non-functional.
-	Decade of Creation: Older water wells, particularly those established in the 1960s, demonstrate a heightened risk of being non-functional.
+The primary goal of this project is to identify factors contributing to the functionality status of water wells across Tanzania, distinguishing between functional and non-functional wells. The dependent variable studied was the 'status_group'. This binary classification was labeled as functional or non-functional water-wells. This project will provide significantly data to predict the likelihood of non functionality. The three major predictors of non-functioning water-wells are Dry Quantity of water, water point types labeled other, and older water-wells, especially water-wells created in the 1960's. This data allows the Tanzanian government, to mitigate potential water shortages.
 
-Identifying potential points of failure across these categories is crucial for proactive intervention by the Tanzanian government to mitigate water distribution challenges and ensure access to clean water for the population.
 
 ![Screen Shot 2024-03-10 at 8 31 21 PM](https://github.com/jguzzo522/twaterwell/assets/75549456/2f50ea80-71c1-4820-8867-baec299bf0ed)
 
