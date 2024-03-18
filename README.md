@@ -1,5 +1,6 @@
 # Predicting Water-well Functionality based on Analysis from Model 4: Gradient Boosting Classifier
-Water scarcity is a significant threat to human life in Tanzania. This project aims is to predict non-functional water-wells so the Tanazanian government can quickly provide fixes to the waterwells, to ensure the population has drinking water.
+Water scarcity is a significant threat to human life in Tanzania. There are many water-wells in the country that try to address the issue of water starvation. However, the data indicate that many are non-functional. 
+
 ## Goal
 The primary goal of this project is to identify factors contributing to the functionality status of water wells across Tanzania, distinguishing between functional and non-functional wells. The dependent variable studied was the 'status_group'. This binary classification was labeled as functional or non-functional water-wells. This project will provide significantly data to predict the likelihood of non functionality. The three major predictors of non-functioning water-wells are Dry Quantity of water, water point types labeled other, and older water-wells, especially water-wells created in the 1960's. This data allows the Tanzanian government, to mitigate potential water shortages.
 
@@ -81,7 +82,6 @@ Before our modeling could begin, several columns were removed or changed to expe
 - **Ward and LGA:** These columns contained numerous individual values, while the district code provided sufficient geographical information. Therefore, we opted to retain the district code for geographic reference instead.
 #### Handling Missing Data
 
-### `construction_year`
 
 ### `construction_year
 The 'constuction_year' column seemed logically important. As many buildings, or projects created many decades ago, often need repair. However, the data have
@@ -96,97 +96,74 @@ The KNN imputation was also used for population. Keeping the `population` column
 
 #### Addressing Categorical data
 
-### Ordinal Encoding of Decade of Construction 
+## Ordinal Encoding of Construction Decade:
 
- **Ordinal Encoding:** The decade categories were converted into ordered numerical values using `OrdinalEncoder`. This transformation kept the  construction decades in time sequential order,  and allowed for numerical algorithm processing.
+OrdinalEncoder was used to create a chronological sequence of the construction decades, which allowed modeling to better analyze the data. Ordinal encoding transforms categorical data with a natural order into numerical values, preserving the rank or sequence inherent to the categories. This method enables algorithms to recognize and utilize the relative importance or progression of these categories, enhancing analytical and predictive processes.
 
-**Rationale:** Ordinal encoding was chosen due to the inherent temporal ordering of construction decades. Representing decades as ordered numbers allows algorithms to understand and leverage this order, potentially enhancing predictive performance.
-
-**Verification:** Successful encoding was confirmed by displaying unique categories and their corresponding encoded values. Additionally, a mapping of each decade to its ordinal value was printed to ensure the encoding reflects the intended chronological order.
-
-To facilitate numerical analysis and modeling, the construction years, represented in textual decades (e.g., '1960s', '1970s'), were encoded into ordered numerical values. The categories created included '1960s', '1970s', '1980s', '1990s', '2000s', and '2010s' This ordinal encoding preserves the temporal order of construction decades, allowing algorithms to understand and utilize this chronological information effectively.
+The categories created were ordered by decade from 1960, 1970 , 1980 ,1990 ,2000, and 2010.
 
 ## Dummy Encoding of Categorical Columns
+ To analyze categorical variables, the remaining columns including 'basin', 'region', 'extraction_type', 'management_group', 'payment', 'water_quality', 'quantity', 'source', 'waterpoint_type', , and 'gps_height' were dummy encoded using `pd.get_dummies()` function in pandas. 
 
-To handle categorical variables, the remaining columns including 'basin', 'region', 'extraction_type', 'management_group', 'payment', 'water_quality', 'quantity', 'source', 'waterpoint_type', , and 'gps_height_categorym' were dummy encoded using `pd.get_dummies()` function in pandas. Dummy encoding converts categorical variables into a set of binary variables, where each category is represented by a binary column with values indicating the presence or absence of that category for each data point.
+Dummy encoding converts categorical variables into a set of binary variables. The categories are converted to 1 or 0, 1 indicating the presence and 0 indicating the absence of the category 
 
-## Model 4: Gradient Boosting Classifier
+ ## Model 4: Gradient Boosting Classifier 
 
-### Gradient Boosting Classifier Model Summary
-
+ ### Gradient Boosting Classifier Model Summary 
+ In this analysis, the dataset underwent preprocessing, including one-hot encoding to transform non-numeric columns into a suitable format for model training. The dataset was then divided into training and testing sets using an 80-20 split, ensuring reproducibility with a `random_state` set to 42. After this a Gradient Boosting classifier was instantiated and trained on the encoded training data, followed by making predictions on the test dataset. 
+ ## Model 4: Gradient Boosting Classifier
+ 
+ ### Gradient Boosting Classifier Model Summary 
 In this analysis, the dataset underwent preprocessing, including one-hot encoding to transform non-numeric columns into a suitable format for model training. The dataset was then divided into training and testing sets using an 80-20 split, ensuring reproducibility with a `random_state` set to 42. Subsequently, a Gradient Boosting classifier was instantiated and trained on the encoded training data, followed by making predictions on the test dataset.
 
-## Model 4: Gradient Boosting Classifier
-
-### Gradient Boosting Classifier Model Summary
-
-In this analysis, the dataset underwent preprocessing, including one-hot encoding to transform non-numeric columns into a suitable format for model training. The dataset was then divided into training and testing sets using an 80-20 split, ensuring reproducibility with a `random_state` set to 42. Subsequently, a Gradient Boosting classifier was instantiated and trained on the encoded training data, followed by making predictions on the test dataset.
-
-### Model 4 Performance
+### Model 4 Performancev
 
 The model demonstrated an accuracy of approximately 79.81% on the test set, indicating its ability to correctly classify water-well functionality. Importantly, it also exhibited the lowest number of false negatives among all models, which is crucial for Tanzania's water distribution efforts. Achieving a high level of accuracy ensures reliable predictions, which are essential for effectively allocating resources and addressing water-related challenges. Minimizing false negatives is particularly important in this context, as it directly impacts human lives; access to clean water is a matter of life and death for communities in need.
 
 ![Screen Shot 2024-03-10 at 8 10 32 PM](https://github.com/jguzzo522/twaterwell/assets/75549456/ba75fec0-b85d-42a5-b4e4-be466e75a811)
 
-#### Confusion Matrix
+#### Confusion Matrix 
+The confusion matrix illustrates the model's predictions compared to the actual labels. It consists of four cells: 
+ - **True Positive (TP)**: Water wells that are correctly classified as "Functional" (2529).
+ - **False Positive (FP)**: Water wells that are incorrectly classified as "Non-Functional" when they are actually "Functional" (1897).
+ - **False Negative (FN)**: Water wells that are incorrectly classified as "Functional" when they are actually "Non-Functional" (428).
+ - **True Negative (TN)**: Water wells that are correctly classified as "Non-Functional" (6664). 
 
-The confusion matrix provides a detailed breakdown of the model's predictions compared to the actual labels. It consists of four cells:
-
-- **True Positive (TP)**: Water wells that are correctly classified as "Functional" (2529).
-- **False Positive (FP)**: Water wells that are incorrectly classified as "Non-Functional" when they are actually "Functional" (1897).
-- **False Negative (FN)**: Water wells that are incorrectly classified as "Functional" when they are actually "Non-Functional" (428).
-- **True Negative (TN)**: Water wells that are correctly classified as "Non-Functional" (6664).
-
-The confusion matrix helps evaluate the model's performance in terms of correctly and incorrectly classified instances of each class.
+The confusion matrix can quickly show you where the model is fitted. For this project, it was important to reduce false negatives. A false negative could mean the difference of life and death, because these water-wells are non-functioning but the model indicate they are functional. This model does a fair job at eliminating this risk. 
 
 
 ### Classification Report
 
-The classification report provides a comprehensive breakdown of precision, recall, and F1-score for each class, offering insights into the model's performance across different categories.
+### ROC AUC Score 
 
-### ROC AUC Score
-
-With a ROC AUC score of around 0.756, the model exhibits a strong ability to discriminate between positive and negative classes, underscoring its effectiveness in distinguishing functional and non-functional water wells.
+This model has a ROC AUC score of around 0.756. This indicates the model has a strong ability to discriminate between positive and negative classes. This means this model is effective at making a distinction between function and non-functional water-wells
 
 ### Model Performance Metrics
 
-#### Accuracy
-The accuracy metric measures the overall correctness of the model's predictions. In this case, the model achieved an accuracy of approximately 79.81%, meaning it correctly classified about 79.81% of all water wells.
-
-#### Classification Report
-The classification report provides detailed metrics such as precision, recall, and F1-score for each class. These metrics are computed based on the counts in the confusion matrix and provide insights into the model's performance for both "Functional" and "Non-Functional" classes.
-
-- **Precision**: The proportion of correctly predicted instances out of all instances predicted as positive.
-- **Recall**: The proportion of correctly predicted instances out of all actual positive instances.
-- **F1-Score**: The harmonic mean of precision and recall, providing a balanced measure of model performance.
-
-The weighted average precision, recall, and F1-score are also provided, giving an overall performance measure across both classes.
-
-#### ROC AUC Score
-The ROC AUC score measures the model's ability to distinguish between positive and negative classes. A higher ROC AUC score indicates better discrimination ability. In this case, the ROC AUC score is approximately 0.756, suggesting that the model performs reasonably well in distinguishing between functional and non-functional water wells.
-
+#### Accuracy 
+The accuracy metric measures the overall correctness of the model's predictions. In this case, the model achieved an accuracy of approximately 79.81%, meaning it correctly classified about 79.81% of all water wells. 
 
 ### Feature Importances for Gradient Boosting Classifier
 
-The feature importances highlight the significance of various predictors in determining water-well functionality. Notably, 'quantity_dry', 'waterpoint_type_other', 'extraction_type_other', 'decade_construction_ordinal', and 'amount_tsh' emerged as the top contributors, indicating their influential role in the model's predictions.
+According to this models data, quantity_dry', 'waterpoint_type_other', 'extraction_type_other', 'decade_construction_ordinal', were all important features. These variables were most important when predicting which water-wells functioned. 
 
 ## 'Water_quantity'
 
 ![Screen Shot 2024-03-10 at 8 18 26 PM](https://github.com/jguzzo522/twaterwell/assets/75549456/5de55cdc-1f41-48bc-933b-ae008cf02c47)
 
-The first visualization highlights the critical role of water quantity in well functionality, demonstrating that wells labeled as 'dry' are functional only about 5% of the time. Similarly, wells with an 'unknown' water quantity are functional in only around 25% of cases, underscoring the urgency for the Tanzanian government to address water scarcity, particularly in areas with dry wells. This focused approach is crucial for mitigating the water crisis effectively. This graph provides a clear directive for policy and intervention strategies aimed at improving water access and sustainability.
+The first visualization highlights the critical role of 'water_quantity' in well functionality. Wells labeled as 'dry' are functional only about 5% of the time. Similarly, wells with an 'unknown' water quantity are functional in only around 25% of cases. The Tanzanian government should look to water-wells that are dry, to mitigate the water crisis.
 
 ## 'Water_point'
 
 ![Screen Shot 2024-03-10 at 8 18 01 PM](https://github.com/jguzzo522/twaterwell/assets/75549456/d57bc6a6-ed38-4dd6-9b2c-41cd261e5843)
 
-This visualization underscores the significant impact of water point types on well functionality. It highlights that water points categorized as 'other' have the lowest functionality rate, approximately 20%, indicating urgent attention is required. In contrast, communal standpipes perform notably better, though the variation within this category is significant. For example, communal standpipes (single) show satisfactory functionality, while communal standpipes (multiple) exhibit reduced effectiveness. This distinction suggests a need for the government to scrutinize the categorization of 'other' water points further and consider converting them to more reliable types, like the more effective communal standpipe model. Implementing targeted improvements based on these insights could significantly enhance water accessibility and reliability across communities.
+This visualization shows the impact of water point types on well functionality. It highlights that water points categorized as 'other' have the lowest functionality rate, approximately 20%. Tanzania should focus its efforts on creating more water-wells that are communal standpipes(single).  This graph allows the government to visualize the problem, and potentially update the water point types when performing maintenance. The government should move away from 'other' type. water wells, and switch to more effective water points. 
 
 # 'Decade_of_Construction' 
 
 ![Screen Shot 2024-03-10 at 8 17 32 PM](https://github.com/jguzzo522/twaterwell/assets/75549456/b6216fde-dd1c-41e5-abec-9c3d9358ccb3)
 
-This visualization illustrates the critical need for refurbishing older water wells in Tanzania. Data reveals a clear trend: the older the well, particularly those constructed in the 1960s, 1970s, and 1980s, the less likely it is to function adequately, with functionality rates falling below 50%. In contrast, wells built more recently demonstrate significantly better performance. Allocating resources towards the modernization of these older wells could markedly improve overall water availability, offering a tangible strategy for the Tanzanian government to boost water production and reliability.
+This visualization shows a clear trend: the older the well, particularly those constructed in the 1960s, 1970s, and 1980s, the less likely the well will function. In contrast, newer wells better performance. The government should allocate resources to renovating the old water-wells.
 
 # Suggestions for the Tanzanian Government to Improve Waterwell Production
 
