@@ -117,7 +117,7 @@ Dummy encoding converts categorical variables into a set of binary variables. Th
  ### Gradient Boosting Classifier Model Summary 
 In this analysis, the dataset underwent preprocessing, including one-hot encoding to transform non-numeric columns into a suitable format for model training. The dataset was then divided into training and testing sets using an 80-20 split, ensuring reproducibility with a `random_state` set to 42. Subsequently, a Gradient Boosting classifier was instantiated and trained on the encoded training data, followed by making predictions on the test dataset.
 
-### Model 4 Performancev
+### Model 4 Performance
 
 The model demonstrated an accuracy of approximately 79.81% on the test set, indicating its ability to correctly classify water-well functionality. Importantly, it also exhibited the lowest number of false negatives among all models, which is crucial for Tanzania's water distribution efforts. Achieving a high level of accuracy ensures reliable predictions, which are essential for effectively allocating resources and addressing water-related challenges. Minimizing false negatives is particularly important in this context, as it directly impacts human lives; access to clean water is a matter of life and death for communities in need.
 
