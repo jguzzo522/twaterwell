@@ -1,4 +1,4 @@
-# Predicting Water-well Functionality based on Analysis from Model 4: Gradient Boosting Classifier
+# Predicting Water-well Functionality Using Gradient Boosting Classifier
 Water scarcity is a significant threat to human life in Tanzania. There are many water-wells in the country that try to address the issue of water starvation. However, the data indicate that many are non-functional. 
 
 ## Goal
