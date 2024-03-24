@@ -1,5 +1,7 @@
+#datafiles
 twellsindependent.csv
 twellsdependent.csv
 twellstrainingsetvaluesindependent.csv
+#junk
 .ipynb_checkpoints
 .DS_Store
