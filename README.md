@@ -109,10 +109,6 @@ The categories created were ordered by decade from 1960, 1970 , 1980 ,1990 ,2000
 Dummy encoding converts categorical variables into a set of binary variables. The categories are converted to 1 or 0, 1 indicating the presence and 0 indicating the absence of the category 
 
  ## Model 4: Gradient Boosting Classifier 
-
- ### Gradient Boosting Classifier Model Summary 
- In this analysis, the dataset underwent preprocessing, including one-hot encoding to transform non-numeric columns into a suitable format for model training. The dataset was then divided into training and testing sets using an 80-20 split, ensuring reproducibility with a `random_state` set to 42. After this a Gradient Boosting classifier was instantiated and trained on the encoded training data, followed by making predictions on the test dataset. 
- ## Model 4: Gradient Boosting Classifier
  
  ### Gradient Boosting Classifier Model Summary 
 In this analysis, the dataset underwent preprocessing, including one-hot encoding to transform non-numeric columns into a suitable format for model training. The dataset was then divided into training and testing sets using an 80-20 split, ensuring reproducibility with a `random_state` set to 42. Subsequently, a Gradient Boosting classifier was instantiated and trained on the encoded training data, followed by making predictions on the test dataset.
