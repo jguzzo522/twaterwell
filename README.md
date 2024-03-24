@@ -70,7 +70,7 @@ Two datasets were merged based on ID. The two datasets had similar or duplicate 
 
 In order to simplify the analysis of the dependent variable 'status_group', I adjusted the Trinary classification into a Binary classification. 'Functional' and 'functional needs' repair', were merged into a single value, and 'non-functional' was left alone. 
 
-# Removal of Non-Duplicate Columns
+## Removal of Non-Duplicate Columns
 
 
 Before our modeling could begin, several columns were removed or changed to expedite that analysis :
