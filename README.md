@@ -174,4 +174,8 @@ The Tanzanian government should immediately prioritize interventions for water w
 
 Although the dataset analyzed was comprehensive, it was not possible to examine every variable in detail. Notably, factors such as the well's funder or management entity, which could significantly impact water production, were not fully explored. For instance, cost-cutting measures by certain funders may compromise well quality, and some management companies may neglect necessary maintenance, impacting functionality. Without detailed analysis of these aspects, it's challenging to draw definitive conclusions about their impact on water well functionality. In addtion, without truly knowing the landscape like a local, it is impossible to know where building a dam would be possible. 
 
+## Additional information
+
+Please see completed anysis in the presentation, or the Jupyternotebook
+
 
