@@ -172,7 +172,6 @@ Although the dataset analyzed was comprehensive, it was not possible to examine 
 
 ## Additional information
 
-For a detailed analysis, see the [Tanwaterwell Notebook](https://github.com/jguzzo522/twaterwell/blob/main/tanwaterwell.ipynb).
-
+For a detailed analysis, see the [Tanwaterwell Notebook](https://github.com/jguzzo522/twaterwell/blob/main/tanwaterwell.ipynb). For more insights, review the [Tanzanian Water Wells PDF](https://github.com/jguzzo522/twaterwell/blob/main/Tanzanian%20Water%20Wells.pdf).
 
 
