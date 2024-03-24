@@ -176,6 +176,7 @@ Although the dataset analyzed was comprehensive, it was not possible to examine 
 
 ## Additional information
 
-Please see completed anysis in the presentation, or the Jupyternotebook
+For a detailed analysis, see the [Tanwaterwell Notebook](https://github.com/jguzzo522/twaterwell/blob/main/tanwaterwell.ipynb).
+
 
 
