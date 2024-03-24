@@ -80,7 +80,8 @@ Before our modeling could begin, several columns were removed or changed to expe
 - **Installer:** With 2146 unique values, the installer column indicates a wide variety of organizations or individuals responsible for installing water-points. Since analyzing each unique installer would be cumbersome we removed this variable to streamline the dataset.
 - **Recorded By:** This column contains only one unique value, indicating that all records were recorded by the same entity. Since it does not offer any variability or meaningful information for analysis, removing it simplifies the dataset without sacrificing relevant information.
 - **Ward and LGA:** These columns contained numerous individual values, while the district code provided sufficient geographical information. Therefore, we opted to retain the district code for geographic reference instead.
-#### Handling Missing Data
+- 
+## Handling Missing Data
 
 
 ### `construction_year
