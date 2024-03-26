@@ -178,6 +178,6 @@ In addition further examination of geographical features may prove important. Th
 
 ## Additional information
 
-For a detailed analysis, see the [Tanwaterwell Notebook](https://github.com/jguzzo522/twaterwell/blob/main/tanwaterwell.ipynb). For more insights, review the [Tanzanian Water Wells PDF](https://github.com/jguzzo522/twaterwell/blob/main/Tanzanian%20Water%20Wells.pdf).
+For a detailed analysis, see the [Tanwaterwell Notebook](https://github.com/jguzzo522/twaterwell/blob/main/tanwaterwell.ipynb). For more insights, review the [Tanzanian Water Wells 2 PDF](https://github.com/jguzzo522/twaterwell/blob/main/Tanzanian%20Water%20Wells%202.pdf).
 
 
